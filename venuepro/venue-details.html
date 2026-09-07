@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VenuePro – Venue Details</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">V</div>
+        <div>
+          <div class="sidebar-logo-text">VenuePro</div>
+          <div class="sidebar-logo-sub">Enterprise Logistics</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="customer-dashboard.html" class="nav-item ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="venue-listings.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Bookings & Venues
+        </a>
+        <a href="browse-caterers.html" class="nav-item ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Catering Partners
+        </a>
+        <a href="customer-notifications.html" class="nav-item ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Notifications
+        </a>
+        <a href="customer-chat.html" class="nav-item ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Support Chat
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="login-role.html" class="nav-item" style="color:var(--gray-400);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Switch Role / Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-search">
+          <span class="topbar-search-icon">🔍</span>
+          <input type="text" placeholder="Search event venues, bookings...">
+        </div>
+        <div class="topbar-actions">
+          <a href="customer-notifications.html" class="topbar-icon-btn">
+            <span class="badge">3</span>
+            🔔
+          </a>
+          <a href="customer-chat.html" class="topbar-icon-btn">
+            💬
+          </a>
+          <div class="topbar-user">
+            <div class="user-avatar" style="background:#2563eb;">M</div>
+            <div class="user-info">
+              <div class="user-name">Mahmud</div>
+              <div class="user-role">Enterprise Client</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-body">
+        
+<div class="breadcrumb">
+  <a href="venue-listings.html">Venues</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">Grand Emerald Ballroom</span>
+</div>
+
+<div class="grid-2" style="grid-template-columns: 2.2fr 1fr; align-items:start; gap:28px;">
+  <!-- Main Venue Info -->
+  <div>
+    <div class="mb-16">
+      <span class="stat-badge positive" style="margin-bottom:8px;">Available for Booking</span>
+      <div class="flex-between">
+        <h1 style="font-size:2.4rem; font-weight:800;">Grand Emerald Ballroom</h1>
+        <div class="flex gap-8">
+          <button class="topbar-icon-btn">🔗</button>
+          <button class="topbar-icon-btn">❤️</button>
+        </div>
+      </div>
+      <div class="flex-center gap-16 text-sm text-muted mt-8">
+        <span class="star font-bold">★ 4.9 (124 Reviews)</span>
+        <span>📍 Downtown District, Level 4</span>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="grid-2 mb-32" style="gap:12px; height:380px;">
+      <div style="background:url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80') center/cover; border-radius:var(--radius); height:100%;"></div>
+      <div style="display:flex; flex-direction:column; gap:12px; height:100%;">
+        <div style="flex:1; background:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80') center/cover; border-radius:var(--radius);"></div>
+        <div style="flex:1; background:url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80') center/cover; border-radius:var(--radius); position:relative; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:1.2rem;">
+            +14 PHOTOS
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="card mb-24">
+      <h3 class="mb-12">About the Venue</h3>
+      <p class="mb-12">The Grand Emerald Ballroom stands as the pinnacle of our enterprise venue collection. Spanning over 8,500 square feet of unobstructed space, it features a unique blend of neo-classical architecture and modern technological integration. Designed to host up to 600 guests, the ballroom offers state-of-the-art acoustics, a dedicated VIP lounge, and private access elevators for high-profile attendees.</p>
+      <p>Whether you are hosting a multinational corporate summit, a high-fashion runway event, or a prestigious gala, the ballroom's modular layout and sophisticated aesthetic provide the perfect canvas for your vision.</p>
+    </div>
+
+    <!-- Key Amenities -->
+    <div class="card mb-24">
+      <h3 class="mb-16">Key Amenities</h3>
+      <div class="grid-4 gap-16 text-center">
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">📶</div>
+          <div class="font-semibold text-sm">Ultra-Fast Fiber</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">🔊</div>
+          <div class="font-semibold text-sm">Bose Sound System</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">🍴</div>
+          <div class="font-semibold text-sm">Full In-house Catering</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">🚗</div>
+          <div class="font-semibold text-sm">Valet Parking</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">♿</div>
+          <div class="font-semibold text-sm">Full ADA Compliance</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">🎤</div>
+          <div class="font-semibold text-sm">A/V Support Team</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">🛡️</div>
+          <div class="font-semibold text-sm">Elite Security</div>
+        </div>
+        <div style="padding:14px; background:var(--gray-50); border-radius:var(--radius-sm);">
+          <div style="font-size:24px; margin-bottom:6px;">🚪</div>
+          <div class="font-semibold text-sm">4 Breakout Rooms</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Tiers -->
+    <div class="card mb-24">
+      <h3 class="mb-16 text-center">Flexible Pricing Tiers</h3>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">ESSENTIAL</div>
+          <div class="pricing-price">$2,400 <span>/session</span></div>
+          <ul class="pricing-features">
+            <li>✓ Venue Access (6h)</li>
+            <li>✓ Basic A/V setup</li>
+            <li>✓ Tables & Chairs</li>
+          </ul>
+          <a href="booking-date-guests.html" class="btn btn-outline btn-full">Select Plan</a>
+        </div>
+
+        <div class="pricing-card featured" style="border-color:var(--primary); background:#eff6ff;">
+          <div class="pricing-popular">MOST POPULAR</div>
+          <div class="pricing-tier" style="color:var(--primary);">ENTERPRISE</div>
+          <div class="pricing-price">$4,800 <span>/session</span></div>
+          <ul class="pricing-features">
+            <li>✓ Full Day Access (12h)</li>
+            <li>✓ Premium A/V & Tech</li>
+            <li>✓ Basic Beverage Package</li>
+            <li>✓ Logistics Manager</li>
+          </ul>
+          <a href="booking-date-guests.html" class="btn btn-primary btn-full">Select Plan</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-tier">ELITE GALA</div>
+          <div class="pricing-price">$8,500 <span>/session</span></div>
+          <ul class="pricing-features">
+            <li>✓ 24h Exclusive Access</li>
+            <li>✓ Full Custom Catering</li>
+            <li>✓ Valet & Security Detail</li>
+            <li>✓ Post-event Cleaning</li>
+          </ul>
+          <a href="booking-date-guests.html" class="btn btn-outline btn-full">Select Plan</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Reviews -->
+    <div class="card">
+      <div class="flex-between mb-16">
+        <h3>Client Feedback</h3>
+        <a href="#" class="text-sm font-semibold">Write a Review</a>
+      </div>
+      <div class="card mb-12" style="background:var(--gray-50);">
+        <div class="flex-between mb-8">
+          <div class="flex-center gap-8">
+            <div class="user-avatar" style="background:#475569;">MS</div>
+            <div>
+              <div class="font-semibold text-sm">Michael Stern</div>
+              <div class="text-xs text-muted">Global Tech Summit Org.</div>
+            </div>
+          </div>
+          <span class="star">★★★★★</span>
+        </div>
+        <p class="text-sm">"The logistics were seamless. The VenuePro team anticipated every need for our VIP speakers. The acoustic isolation in the Emerald Ballroom is incredible."</p>
+      </div>
+      <div class="card" style="background:var(--gray-50);">
+        <div class="flex-between mb-8">
+          <div class="flex-center gap-8">
+            <div class="user-avatar" style="background:#475569;">EJ</div>
+            <div>
+              <div class="font-semibold text-sm">Elena Jenkins</div>
+              <div class="text-xs text-muted">Luxury Events Co.</div>
+            </div>
+          </div>
+          <span class="star">★★★★★</span>
+        </div>
+        <p class="text-sm">"Stunning venue. Our clients were blown away by the sunset views. Staff handled peak arrival smoothly."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Quick Booking Sidebar -->
+  <div style="position:sticky; top:84px;">
+    <div class="card mb-16" style="border:2px solid var(--primary);">
+      <h3 class="mb-4">Quick Booking</h3>
+      <p class="text-xs text-muted mb-16">Reserve your preferred date</p>
+
+      <form action="booking-catering-packages.html">
+        <div class="form-group">
+          <label class="form-label">Select Date</label>
+          <input type="date" class="form-control" value="2026-10-15" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Estimated Guest Count</label>
+          <div class="flex-center gap-8">
+            <button type="button" class="btn btn-ghost btn-sm">-</button>
+            <input type="number" class="form-control text-center" value="100" style="width:100px;">
+            <button type="button" class="btn btn-ghost btn-sm">+</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Event Duration</label>
+          <select class="form-control">
+            <option>Full Day (12 Hours)</option>
+            <option>Half Day (6 Hours)</option>
+            <option>Evening Gala (8 Hours)</option>
+          </select>
+        </div>
+
+        <div style="border-top:1px solid var(--gray-200); padding-top:14px; margin-bottom:16px;">
+          <div class="flex-between text-sm mb-8">
+            <span class="text-muted">Base Rate (Enterprise)</span>
+            <span class="font-semibold">$4,800.00</span>
+          </div>
+          <div class="flex-between text-sm mb-8">
+            <span class="text-muted">Service Fee (15%)</span>
+            <span class="font-semibold">$720.00</span>
+          </div>
+          <div class="flex-between mb-16" style="font-size:1.1rem; font-weight:800; color:var(--primary);">
+            <span>Total Est.</span>
+            <span>$5,520.00</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full mb-8">Check Availability →</button>
+        <div class="text-xs text-center text-muted">No charge will be made until booking is confirmed by an administrator.</div>
+      </form>
+    </div>
+
+    <div class="card" style="background:#eff6ff; border:1px dashed var(--primary); text-align:center;">
+      <div style="font-size:24px; margin-bottom:4px;">💡</div>
+      <div class="font-semibold text-sm mb-4">Need a custom quote?</div>
+      <p class="text-xs text-muted mb-12">Talk to our enterprise venue logistics team for custom multi-hall bookings.</p>
+      <a href="customer-chat.html" class="btn btn-outline btn-sm">Chat with Specialist</a>
+    </div>
+  </div>
+</div>
+
+      </main>
+
+      <footer class="page-footer">
+        <div>VenuePro • © 2026 VenuePro Enterprise. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="index-nav.html">Sitemap</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact Support</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

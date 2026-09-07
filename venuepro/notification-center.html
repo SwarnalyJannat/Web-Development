@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VenuePro Admin – Notifications</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon" style="background:#0f172a;">🛡️</div>
+        <div>
+          <div class="sidebar-logo-text">VenuePro</div>
+          <div class="sidebar-logo-sub" style="color:#60a5fa;">Enterprise Admin</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Governance</div>
+        <a href="admin-dashboard.html" class="nav-item">Dashboard</a>
+        <a href="admin-pending-bookings.html" class="nav-item">Bookings Approvals</a>
+        <a href="venue-management.html" class="nav-item ">Venue Catalog</a>
+        <a href="admin-catering-management.html" class="nav-item">Catering Oversight</a>
+        <a href="admin-staff-management.html" class="nav-item">Staff Directory</a>
+        <a href="admin-reports.html" class="nav-item">Reports & Analytics</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="login-role.html" class="nav-item" style="color:var(--gray-400);">Logout Admin</a>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-search">
+          <span class="topbar-search-icon">🔍</span>
+          <input type="text" placeholder="Search venues, amenities, properties...">
+        </div>
+        <div class="topbar-actions">
+          <a href="notification-center.html" class="topbar-icon-btn">🔔</a>
+          <div class="topbar-user">
+            <div class="user-avatar" style="background:#0f172a;">AS</div>
+            <div class="user-info">
+              <div class="user-name">Alex Sterling</div>
+              <div class="user-role">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="page-body">
+<div class="flex-between mb-24">
+  <div>
+    <h1>Administrative Notification Center</h1>
+    <p>Incoming booking approvals, compliance alerts, and staff scheduling updates.</p>
+  </div>
+  <button class="btn btn-ghost btn-sm">Mark All as Read</button>
+</div>
+
+<div class="card">
+  <div class="notif-item unread">
+    <div class="notif-dot"></div>
+    <div class="notif-avatar" style="background:#2563eb;">📋</div>
+    <div style="flex:1;">
+      <div class="flex-between mb-4">
+        <span class="font-bold text-sm">New Booking Request #BK-9021</span>
+        <span class="text-xs text-muted">15 mins ago</span>
+      </div>
+      <p class="text-sm">Jane Doe Events submitted a full-day ballroom reservation ($5,809.32).</p>
+      <div class="mt-8"><a href="admin-booking-approval.html" class="btn btn-primary btn-sm">Review Now</a></div>
+    </div>
+  </div>
+
+  <div class="notif-item unread">
+    <div class="notif-dot"></div>
+    <div class="notif-avatar" style="background:#059669;">🍴</div>
+    <div style="flex:1;">
+      <div class="flex-between mb-4">
+        <span class="font-bold text-sm">New Caterer Application</span>
+        <span class="text-xs text-muted">2 hours ago</span>
+      </div>
+      <p class="text-sm">Epicurean Events Co. uploaded commercial license documentation for review.</p>
+      <div class="mt-8"><a href="admin-review-caterer.html" class="btn btn-outline btn-sm">Inspect Application</a></div>
+    </div>
+  </div>
+</div>
+</main>
+      <footer class="page-footer">
+        <div>© 2026 VenuePro Enterprise Administration.</div>
+        <div class="footer-links"><a href="index-nav.html">Sitemap</a></div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

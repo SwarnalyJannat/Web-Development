@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VenuePro – Complete UI Directory & Sitemap</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: #f8fafc; padding: 40px 24px; }
+    .nav-container { max-width: 1100px; margin: 0 auto; }
+    .nav-group { margin-bottom: 36px; }
+    .nav-group-title {
+      font-size: 1.25rem; font-weight: 700; color: var(--gray-800);
+      margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--gray-200);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-link-card {
+      background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+      padding: 14px 18px; text-decoration: none; color: var(--gray-800);
+      transition: all var(--transition); display: block;
+    }
+    .page-link-card:hover {
+      border-color: var(--primary); box-shadow: var(--shadow-sm); transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .page-link-name { font-weight: 700; font-size: 0.95rem; color: var(--primary); margin-bottom: 4px; }
+    .page-link-desc { font-size: 0.8rem; color: var(--gray-500); }
+  </style>
+</head>
+<body>
+  <div class="nav-container">
+    <div class="flex-between mb-32" style="background:#fff; padding:24px 32px; border-radius:var(--radius); border:1px solid var(--gray-200);">
+      <div class="flex-center gap-16">
+        <div class="sidebar-logo-icon" style="width:48px; height:48px; font-size:24px;">V</div>
+        <div>
+          <h1 style="font-size:1.8rem; font-weight:800;">VenuePro UI Directory</h1>
+          <p>Complete multi-role interface library built from Figma designs with pure HTML & CSS.</p>
+        </div>
+      </div>
+      <a href="index.html" class="btn btn-primary">Open Landing Page →</a>
+    </div>
+
+    <!-- Group 1: Landing & Auth -->
+    <div class="nav-group">
+      <div class="nav-group-title"><span>🚀</span> Landing & Role Authentication</div>
+      <div class="grid-3 gap-16">
+        <a href="index.html" class="page-link-card">
+          <div class="page-link-name">index.html</div>
+          <div class="page-link-desc">Main marketing landing page with hero, features & role cards.</div>
+        </a>
+        <a href="login-role.html" class="page-link-card">
+          <div class="page-link-name">login-role.html</div>
+          <div class="page-link-desc">Role selector for logging in (Customer, Admin, Staff, Caterer).</div>
+        </a>
+        <a href="signup-role.html" class="page-link-card">
+          <div class="page-link-name">signup-role.html</div>
+          <div class="page-link-desc">Role selector for account registration.</div>
+        </a>
+        <a href="customer-login.html" class="page-link-card">
+          <div class="page-link-name">customer-login.html</div>
+          <div class="page-link-desc">Customer login with email/password and Google SSO button.</div>
+        </a>
+        <a href="customer-register.html" class="page-link-card">
+          <div class="page-link-name">customer-register.html</div>
+          <div class="page-link-desc">Customer account registration form.</div>
+        </a>
+        <a href="caterer-login.html" class="page-link-card">
+          <div class="page-link-name">caterer-login.html</div>
+          <div class="page-link-desc">Caterer portal sign in.</div>
+        </a>
+        <a href="caterer-signup.html" class="page-link-card">
+          <div class="page-link-name">caterer-signup.html</div>
+          <div class="page-link-desc">Caterer partner onboarding & commercial license form.</div>
+        </a>
+        <a href="caterer-pending.html" class="page-link-card">
+          <div class="page-link-name">caterer-pending.html</div>
+          <div class="page-link-desc">Caterer application under review status screen.</div>
+        </a>
+        <a href="staff-login.html" class="page-link-card">
+          <div class="page-link-name">staff-login.html</div>
+          <div class="page-link-desc">Staff operations sign in.</div>
+        </a>
+        <a href="staff-signup.html" class="page-link-card">
+          <div class="page-link-name">staff-signup.html</div>
+          <div class="page-link-desc">Staff account activation with invite code.</div>
+        </a>
+        <a href="admin-login.html" class="page-link-card">
+          <div class="page-link-name">admin-login.html</div>
+          <div class="page-link-desc">Restricted administrator authentication console.</div>
+        </a>
+        <a href="admin-signup.html" class="page-link-card">
+          <div class="page-link-name">admin-signup.html</div>
+          <div class="page-link-desc">System administrator provisioning form.</div>
+        </a>
+        <a href="registration-successful.html" class="page-link-card">
+          <div class="page-link-name">registration-successful.html</div>
+          <div class="page-link-desc">Success confirmation after account creation.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 2: Customer Flow -->
+    <div class="nav-group">
+      <div class="nav-group-title"><span>🛍️</span> Customer Experience & Booking Funnel</div>
+      <div class="grid-3 gap-16">
+        <a href="customer-dashboard.html" class="page-link-card">
+          <div class="page-link-name">customer-dashboard.html</div>
+          <div class="page-link-desc">Recent activities table and upcoming event countdown card.</div>
+        </a>
+        <a href="venue-listings.html" class="page-link-card">
+          <div class="page-link-name">venue-listings.html</div>
+          <div class="page-link-desc">Filterable inventory grid with price sliders and capacity filters.</div>
+        </a>
+        <a href="venue-details.html" class="page-link-card">
+          <div class="page-link-name">venue-details.html</div>
+          <div class="page-link-desc">Grand Emerald Ballroom with photo gallery, amenities & booking.</div>
+        </a>
+        <a href="booking-date-guests.html" class="page-link-card">
+          <div class="page-link-name">booking-date-guests.html</div>
+          <div class="page-link-desc">Step 1: Date selection, hours, and attendee count.</div>
+        </a>
+        <a href="booking-catering-packages.html" class="page-link-card">
+          <div class="page-link-name">booking-catering-packages.html</div>
+          <div class="page-link-desc">Step 2: Gold, Platinum, and Bespoke catering package tiers.</div>
+        </a>
+        <a href="booking-summary-payment.html" class="page-link-card">
+          <div class="page-link-name">booking-summary-payment.html</div>
+          <div class="page-link-desc">Step 3: Secure card payment and itemized summary receipt.</div>
+        </a>
+        <a href="booking-success.html" class="page-link-card">
+          <div class="page-link-name">booking-success.html</div>
+          <div class="page-link-desc">Booking confirmed screen with reference code.</div>
+        </a>
+        <a href="booking-date-conflict.html" class="page-link-card">
+          <div class="page-link-name">booking-date-conflict.html</div>
+          <div class="page-link-desc">Warning modal when requested date has conflict.</div>
+        </a>
+        <a href="booking-status-timeline.html" class="page-link-card">
+          <div class="page-link-name">booking-status-timeline.html</div>
+          <div class="page-link-desc">Interactive vertical timeline of booking progression.</div>
+        </a>
+        <a href="customer-notifications.html" class="page-link-card">
+          <div class="page-link-name">customer-notifications.html</div>
+          <div class="page-link-desc">Client alerts, receipts, and coordination notices.</div>
+        </a>
+        <a href="customer-chat.html" class="page-link-card">
+          <div class="page-link-name">customer-chat.html</div>
+          <div class="page-link-desc">Direct messaging thread with on-site Event Coordinator.</div>
+        </a>
+        <a href="client-invoice.html" class="page-link-card">
+          <div class="page-link-name">client-invoice.html</div>
+          <div class="page-link-desc">Itemized tax invoice view with print & PDF styling.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 3: Caterer & Kitchen -->
+    <div class="nav-group">
+      <div class="nav-group-title"><span>👨‍🍳</span> Caterer & Kitchen Operations</div>
+      <div class="grid-3 gap-16">
+        <a href="caterer-dashboard.html" class="page-link-card">
+          <div class="page-link-name">caterer-dashboard.html</div>
+          <div class="page-link-desc">Active kitchen queue, live order progress & package performance.</div>
+        </a>
+        <a href="caterer-order-details.html" class="page-link-card">
+          <div class="page-link-name">caterer-order-details.html</div>
+          <div class="page-link-desc">Order breakdown, ingredient specs & delivery milestones.</div>
+        </a>
+        <a href="caterer-food-packages.html" class="page-link-card">
+          <div class="page-link-name">caterer-food-packages.html</div>
+          <div class="page-link-desc">Library of active catering tiers and tasting menus.</div>
+        </a>
+        <a href="caterer-create-package-1.html" class="page-link-card">
+          <div class="page-link-name">caterer-create-package-1.html</div>
+          <div class="page-link-desc">Create package wizard Step 1: Basic info & service style.</div>
+        </a>
+        <a href="caterer-create-package-2.html" class="page-link-card">
+          <div class="page-link-name">caterer-create-package-2.html</div>
+          <div class="page-link-desc">Create package wizard Step 2: Course breakdown.</div>
+        </a>
+        <a href="caterer-create-package-3.html" class="page-link-card">
+          <div class="page-link-name">caterer-create-package-3.html</div>
+          <div class="page-link-desc">Create package wizard Step 3: Pricing & catalog publishing.</div>
+        </a>
+        <a href="package-details.html" class="page-link-card">
+          <div class="page-link-name">package-details.html</div>
+          <div class="page-link-desc">Individual food package details and courses.</div>
+        </a>
+        <a href="succeed-package.html" class="page-link-card">
+          <div class="page-link-name">succeed-package.html</div>
+          <div class="page-link-desc">Success screen after publishing package.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 4: Admin Governance -->
+    <div class="nav-group">
+      <div class="nav-group-title"><span>🛡️</span> Administrator Governance & Analytics</div>
+      <div class="grid-3 gap-16">
+        <a href="admin-dashboard.html" class="page-link-card">
+          <div class="page-link-name">admin-dashboard.html</div>
+          <div class="page-link-desc">Executive metrics, CSS revenue chart & venue occupancy bars.</div>
+        </a>
+        <a href="admin-pending-bookings.html" class="page-link-card">
+          <div class="page-link-name">admin-pending-bookings.html</div>
+          <div class="page-link-desc">Review queue of customer venue reservations.</div>
+        </a>
+        <a href="admin-booking-approval.html" class="page-link-card">
+          <div class="page-link-name">admin-booking-approval.html</div>
+          <div class="page-link-desc">Booking approval inspector with client history & actions.</div>
+        </a>
+        <a href="admin-approval-success.html" class="page-link-card">
+          <div class="page-link-name">admin-approval-success.html</div>
+          <div class="page-link-desc">Booking approved confirmation.</div>
+        </a>
+        <a href="admin-review-caterer.html" class="page-link-card">
+          <div class="page-link-name">admin-review-caterer.html</div>
+          <div class="page-link-desc">Audit commercial kitchen certification & grant badges.</div>
+        </a>
+        <a href="admin-staff-management.html" class="page-link-card">
+          <div class="page-link-name">admin-staff-management.html</div>
+          <div class="page-link-desc">Staff coordinator roster & active assignments.</div>
+        </a>
+        <a href="admin-add-staff.html" class="page-link-card">
+          <div class="page-link-name">admin-add-staff.html</div>
+          <div class="page-link-desc">Provision staff access and venue assignments.</div>
+        </a>
+        <a href="admin-catering-management.html" class="page-link-card">
+          <div class="page-link-name">admin-catering-management.html</div>
+          <div class="page-link-desc">Catering partners oversight and pending applications.</div>
+        </a>
+        <a href="admin-reports.html" class="page-link-card">
+          <div class="page-link-name">admin-reports.html</div>
+          <div class="page-link-desc">Operational revenue trends, bookings volume & yields.</div>
+        </a>
+        <a href="admin-export-revenue.html" class="page-link-card">
+          <div class="page-link-name">admin-export-revenue.html</div>
+          <div class="page-link-desc">Export revenue configuration wizard.</div>
+        </a>
+        <a href="admin-export-success.html" class="page-link-card">
+          <div class="page-link-name">admin-export-success.html</div>
+          <div class="page-link-desc">Report generated confirmation.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 5: Staff & Property -->
+    <div class="nav-group">
+      <div class="nav-group-title"><span>🏛️</span> Staff & Venue Management</div>
+      <div class="grid-3 gap-16">
+        <a href="staff-dashboard.html" class="page-link-card">
+          <div class="page-link-name">staff-dashboard.html</div>
+          <div class="page-link-desc">Staff shift overview, assigned events & checklist.</div>
+        </a>
+        <a href="staff-event-setup.html" class="page-link-card">
+          <div class="page-link-name">staff-event-setup.html</div>
+          <div class="page-link-desc">On-site checklist for AV, floor layout & security.</div>
+        </a>
+        <a href="venue-management.html" class="page-link-card">
+          <div class="page-link-name">venue-management.html</div>
+          <div class="page-link-desc">Admin property catalog, occupancy & pricing controls.</div>
+        </a>
+        <a href="add-new-venue.html" class="page-link-card">
+          <div class="page-link-name">add-new-venue.html</div>
+          <div class="page-link-desc">Publish new venue form with amenity toggles.</div>
+        </a>
+        <a href="venue-selection.html" class="page-link-card">
+          <div class="page-link-name">venue-selection.html</div>
+          <div class="page-link-desc">Venue picker during event creation flow.</div>
+        </a>
+        <a href="browse-caterers.html" class="page-link-card">
+          <div class="page-link-name">browse-caterers.html</div>
+          <div class="page-link-desc">Browse certified catering partners catalog.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
