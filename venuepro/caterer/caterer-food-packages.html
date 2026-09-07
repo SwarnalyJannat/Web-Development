@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VenuePro Caterer – Food Packages Library</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .sidebar-logo-sub { color:#10b981; }
+    /* CSS tab switch */
+    .tab-radio { display:none; }
+    #tab-fixed:checked ~ .tab-wrap .tab-content-fixed { display:block; }
+    #tab-custom:checked ~ .tab-wrap .tab-content-custom { display:block; }
+    .tab-content-fixed, .tab-content-custom { display:none; }
+    #tab-fixed:checked ~ .tab-nav [for=tab-fixed],
+    #tab-custom:checked ~ .tab-nav [for=tab-custom] {
+      background: var(--primary); color: #fff; border-color: var(--primary);
+    }
+    .tab-nav { display:flex; gap:8px; margin-bottom:20px; }
+    .tab-nav label { padding:8px 20px; border:1.5px solid var(--gray-300); border-radius:var(--radius-sm); font-size:.85rem; font-weight:600; cursor:pointer; color:var(--gray-600); transition:all .15s; }
+    .tab-nav label:hover { border-color:var(--primary); color:var(--primary); }
+    .menu-section { margin-bottom:14px; padding:12px 14px; background:var(--gray-50); border-radius:var(--radius-sm); }
+    .menu-section-title { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--primary); margin-bottom:6px; }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="app-shell">
+    
+    
+    <aside class="sidebar" id="main-sidebar">
+      <div class="sidebar-logo">
+        <img src="../assets/logo.png" alt="VenuePro" class="sidebar-logo-img">
+        <div>
+          <div class="sidebar-logo-text">VenuePro</div>
+          <div class="sidebar-logo-sub" style="color:#10b981;">Kitchen Operations</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Culinary Dashboard</div>
+        <a href="caterer-dashboard.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Kitchen Overview
+        </a>
+        <a href="caterer-order-details.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Select an Order
+        </a>
+        <a href="caterer-food-packages.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> Package Library
+        </a>
+        <a href="caterer-create-package-1.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg> Create Package
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../login-role.html" class="nav-item" style="color:var(--gray-400);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Exit Kitchen Portal
+        </a>
+      </div>
+    </aside>
+    <div class="main-content">
+            <header class="topbar">
+        <label for="sidebar-toggle" class="sidebar-toggle-btn" title="Toggle Sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </label>
+        <div class="topbar-search">
+          <span class="topbar-search-icon">🔍</span>
+          <input type="text" placeholder="Search kitchen orders, menus, packages...">
+        </div>
+        <div class="topbar-actions">
+          <a href="caterer-notifications.html" class="topbar-icon-btn" title="Notifications">
+            <span class="badge">5</span>
+            🔔
+          </a>
+          <a href="caterer-notifications.html" class="topbar-icon-btn" title="Order Inquiries">
+            💬
+          </a>
+          <div class="topbar-user">
+            <div class="user-avatar" style="background:#059669;">AR</div>
+            <div class="user-info">
+              <div class="user-name">Alex Rivera</div>
+              <div class="user-role">Caterer</div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="page-body">
+
+<div class="flex-between mb-24">
+  <div>
+    <h1>Food Packages Library</h1>
+    <p>Manage fixed-tier and custom bespoke packages available on the VenuePro marketplace.</p>
+  </div>
+  <a href="caterer-create-package-1.html" class="btn btn-primary" style="background:#059669; border-color:#059669;">+ Create New Package</a>
+</div>
+
+<!-- CSS Tab Switch -->
+<input type="radio" class="tab-radio" name="pkg-tab" id="tab-fixed" checked>
+<input type="radio" class="tab-radio" name="pkg-tab" id="tab-custom">
+<nav class="tab-nav">
+  <label for="tab-fixed">📦 Fixed Tier Packages</label>
+  <label for="tab-custom">🎨 Custom Bespoke Packages</label>
+</nav>
+<div class="tab-wrap">
+  <!-- FIXED PACKAGES -->
+  <div class="tab-content-fixed">
+    <div class="card mb-12" style="background:#eff6ff; border:1px solid var(--primary); padding:14px 20px;">
+      <div class="text-sm" style="color:var(--primary);">Fixed packages are standardised tiers with preset menus, headcounts, and pricing. Customers can browse and book these directly from the marketplace.</div>
+    </div>
+    <div class="grid-3 gap-20">
+      <div class="card">
+        <div class="flex-between mb-8">
+          <span class="pill pill-pending">GOLD TIER</span>
+          <span class="text-sm font-bold text-success">$1,200 / event</span>
+        </div>
+        <h3 class="mb-4">Gold Luncheon &amp; Seminar</h3>
+        <div class="text-xs text-muted mb-8">Per head: $24.00 · Min 30 guests · Max 80 guests</div>
+        <div class="menu-section">
+          <div class="menu-section-title">Menu Included</div>
+          <div class="text-xs">• Organic garden salad with lemon vinaigrette</div>
+          <div class="text-xs">• Pan-seared chicken or vegetable Wellington</div>
+          <div class="text-xs">• Artisanal coffee &amp; seasonal tea station</div>
+        </div>
+        <div class="flex-between text-xs text-muted mb-16">
+          <span>★ 4.8 (82 reviews)</span>
+          <span>14 active bookings</span>
+        </div>
+        <div class="flex gap-8">
+          <a href="package-details.html" class="btn btn-outline btn-sm" style="flex:1;">View Details</a>
+          <a href="caterer-create-package-1.html" class="btn btn-ghost btn-sm">Edit</a>
+        </div>
+      </div>
+
+      <div class="card" style="border:2px solid #059669;">
+        <div class="flex-between mb-8">
+          <span class="pill pill-confirmed">PLATINUM GALA</span>
+          <span class="text-sm font-bold text-success">$1,850 / event</span>
+        </div>
+        <h3 class="mb-4">Platinum Evening Banquet</h3>
+        <div class="text-xs text-muted mb-8">Per head: $37.00 · Min 50 guests · Max 200 guests</div>
+        <div class="menu-section">
+          <div class="menu-section-title">Menu Included</div>
+          <div class="text-xs">• Canapés: Lobster roll, mushroom tartlet, duck confit</div>
+          <div class="text-xs">• Entrée: Filet mignon or pan-seared halibut</div>
+          <div class="text-xs">• Dessert: Chocolate fondant + open bar 4h</div>
+        </div>
+        <div class="flex-between text-xs text-muted mb-16">
+          <span>★ 4.95 (140 reviews)</span>
+          <span>28 active bookings</span>
+        </div>
+        <div class="flex gap-8">
+          <a href="package-details.html" class="btn btn-outline btn-sm" style="flex:1;">View Details</a>
+          <a href="caterer-create-package-1.html" class="btn btn-ghost btn-sm">Edit</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex-between mb-8">
+          <span class="pill pill-inquiry">CUSTOM SIGNATURE</span>
+          <span class="text-sm font-bold text-success">$2,400 / event</span>
+        </div>
+        <h3 class="mb-4">Chef's Signature Tasting</h3>
+        <div class="text-xs text-muted mb-8">Per head: $80.00 · Min 20 guests · Max 60 guests</div>
+        <div class="menu-section">
+          <div class="menu-section-title">Menu Included</div>
+          <div class="text-xs">• 5-course private tasting with wine pairings</div>
+          <div class="text-xs">• Dedicated sommelier &amp; head chef at table</div>
+          <div class="text-xs">• Midnight savory bites &amp; nightcap station</div>
+        </div>
+        <div class="flex-between text-xs text-muted mb-16">
+          <span>★ 5.0 (34 reviews)</span>
+          <span>8 active bookings</span>
+        </div>
+        <div class="flex gap-8">
+          <a href="package-details.html" class="btn btn-outline btn-sm" style="flex:1;">View Details</a>
+          <a href="caterer-create-package-1.html" class="btn btn-ghost btn-sm">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM PACKAGES -->
+  <div class="tab-content-custom">
+    <div class="card mb-12" style="background:#fefce8; border:1px solid #fef08a; padding:14px 20px;">
+      <div class="text-sm" style="color:#92400e;">Custom bespoke packages are tailored menu proposals with flexible per-head pricing and guest count. Customers can request a custom package and you negotiate the final menu &amp; cost.</div>
+    </div>
+    <div class="grid-3 gap-20">
+      <div class="card" style="border:2px dashed var(--gray-300);">
+        <div class="flex-between mb-8">
+          <span class="pill" style="background:#ede9fe; color:#6d28d9;">BESPOKE</span>
+          <span class="text-sm font-bold text-primary">Negotiable</span>
+        </div>
+        <h3 class="mb-4">Corporate Awards Night</h3>
+        <div class="text-xs text-muted mb-8">Custom request for 120 guests · 4-course menu</div>
+        <div class="menu-section">
+          <div class="menu-section-title">Client Requested Menu</div>
+          <div class="text-xs">• Halal-certified entrée options</div>
+          <div class="text-xs">• Vegan dessert selection (20% of guests)</div>
+          <div class="text-xs">• Mocktail cocktail station (alcohol-free)</div>
+        </div>
+        <div class="flex-between text-xs text-muted mb-8">
+          <span>Requested per head: $55.00</span>
+          <span class="pill pill-pending" style="font-size:.6rem;">PENDING ACCEPT</span>
+        </div>
+        <div class="flex gap-8">
+          <a href="caterer-create-package-1.html" class="btn btn-primary btn-sm" style="flex:1; background:#059669; border-color:#059669;">Accept &amp; Customise</a>
+          <button class="btn btn-ghost btn-sm">Decline</button>
+        </div>
+      </div>
+
+      <div class="card" style="border:2px solid #059669;">
+        <div class="flex-between mb-8">
+          <span class="pill" style="background:#ede9fe; color:#6d28d9;">BESPOKE</span>
+          <span class="text-sm font-bold text-success">$6,500 agreed</span>
+        </div>
+        <h3 class="mb-4">Wedding Gala Feast</h3>
+        <div class="text-xs text-muted mb-8">Custom 200 guests · 5-course + dessert bar</div>
+        <div class="menu-section">
+          <div class="menu-section-title">Confirmed Custom Menu</div>
+          <div class="text-xs">• Bespoke bridal canapés &amp; cocktail hour</div>
+          <div class="text-xs">• 5-course plated dinner, wine &amp; champagne</div>
+          <div class="text-xs">• 3-tier wedding cake cutting service</div>
+        </div>
+        <div class="flex-between text-xs text-muted mb-8">
+          <span>$32.50 per head (200 guests)</span>
+          <span class="pill pill-confirmed" style="font-size:.6rem;">ACTIVE</span>
+        </div>
+        <div class="flex gap-8">
+          <a href="package-details.html" class="btn btn-outline btn-sm" style="flex:1;">View Details</a>
+          <a href="caterer-create-package-1.html" class="btn btn-ghost btn-sm">Edit</a>
+        </div>
+      </div>
+
+      <a href="caterer-create-package-1.html" class="card" style="border:2px dashed var(--primary); display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:220px; cursor:pointer; text-decoration:none; transition:all .2s;">
+        <div style="font-size:36px; margin-bottom:12px;">➕</div>
+        <div class="font-bold" style="color:var(--primary);">Create New Custom Package</div>
+        <div class="text-xs text-muted mt-4">Build a bespoke menu proposal with per-head pricing</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+      </main>
+                  <footer class="page-footer">
+        <div>© 2026 VenuePro Enterprise Event Management. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+          <a href="../contact-support.html">Contact Support</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

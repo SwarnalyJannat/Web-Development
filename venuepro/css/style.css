@@ -656,3 +656,25 @@ tbody tr:hover td { background: var(--gray-50); }
   .role-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
 }
+
+/* ── Sidebar Toggle (CSS-only checkbox) ── */
+#sidebar-toggle { display: none; }
+.sidebar-toggle-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--gray-100); cursor: pointer;
+  border: none; flex-shrink: 0;
+  transition: background var(--transition);
+  color: var(--gray-600);
+}
+.sidebar-toggle-btn:hover { background: var(--gray-200); }
+.sidebar-toggle-btn svg { width: 20px; height: 20px; pointer-events: none; }
+#sidebar-toggle:checked ~ .app-shell .sidebar { width: 0; min-width: 0; }
+#sidebar-toggle:checked ~ .app-shell .main-content { margin-left: 0; }
+.sidebar { transition: width 0.22s ease, min-width 0.22s ease; }
+.main-content { transition: margin-left 0.22s ease; }
+
+/* ── Logo images ── */
+.sidebar-logo-img { height: 36px; width: auto; flex-shrink: 0; display: block; object-fit: contain; }
+.header-logo-img  { height: 38px; width: auto; display: block; object-fit: contain; }
+.auth-logo-img    { height: 80px; width: auto; margin: 0 auto 8px; display: block; object-fit: contain; }

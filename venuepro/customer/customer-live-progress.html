@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VenuePro – Live Progress</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* CSS-only venue tab switching */
+    .venue-radio { display: none; }
+    .venue-tab-card {
+      display: block; cursor: pointer;
+      border: 2px solid var(--gray-200); border-radius: var(--radius);
+      padding: 16px 20px; background: #fff; transition: all 0.2s ease;
+      position: relative;
+    }
+    .venue-tab-card:hover { border-color: var(--gray-400); transform: translateY(-2px); }
+    
+    #tab-emerald:checked ~ .venue-cards [for="tab-emerald"],
+    #tab-skyline:checked ~ .venue-cards [for="tab-skyline"],
+    #tab-glass:checked ~ .venue-cards [for="tab-glass"] {
+      border-color: var(--primary); background: #eff6ff;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.15);
+    }
+
+    #tab-emerald:checked ~ .venue-cards [for="tab-emerald"] .active-check,
+    #tab-skyline:checked ~ .venue-cards [for="tab-skyline"] .active-check,
+    #tab-glass:checked ~ .venue-cards [for="tab-glass"] .active-check {
+      display: inline-flex;
+    }
+
+    .active-check {
+      display: none; width: 20px; height: 20px; border-radius: 50%;
+      background: var(--primary); color: #fff; font-size: 11px;
+      align-items: center; justify-content: center; position: absolute;
+      top: 12px; right: 12px;
+    }
+
+    .venue-panel { display: none; }
+    #tab-emerald:checked ~ .venue-panels #panel-emerald,
+    #tab-skyline:checked ~ .venue-panels #panel-skyline,
+    #tab-glass:checked ~ .venue-panels #panel-glass {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .progress-bar-inner {
+      height: 12px; border-radius: 6px; background: var(--gray-200); overflow: hidden;
+    }
+    .progress-fill-emerald { width: 68%; height: 100%; background: linear-gradient(90deg, #2563eb, #3b82f6); border-radius: 6px; }
+    .progress-fill-skyline { width: 42%; height: 100%; background: linear-gradient(90deg, #059669, #10b981); border-radius: 6px; }
+    .progress-fill-glass { width: 20%; height: 100%; background: linear-gradient(90deg, #7c3aed, #8b5cf6); border-radius: 6px; }
+
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #10b981;
+      display: inline-block; animation: livePulse 1.6s infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.3); }
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="sidebar-toggle">
+  <div class="app-shell">
+    <!-- Sidebar -->
+    
+    <aside class="sidebar" id="main-sidebar">
+      <div class="sidebar-logo">
+        <img src="../assets/logo.png" alt="VenuePro" class="sidebar-logo-img">
+        <div>
+          <div class="sidebar-logo-text">VenuePro</div>
+          <div class="sidebar-logo-sub">Customer Portal</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="customer-dashboard.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard
+        </a>
+        <a href="venue-listings.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Bookings &amp; Venues
+        </a>
+        <a href="customer-live-progress.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Live Progress
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../login-role.html" class="nav-item" style="color:var(--gray-400);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Switch Role / Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+            <header class="topbar">
+        <label for="sidebar-toggle" class="sidebar-toggle-btn" title="Toggle Sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </label>
+        <div class="topbar-search">
+          <span class="topbar-search-icon">🔍</span>
+          <input type="text" placeholder="Search event venues, bookings, menus...">
+        </div>
+        <div class="topbar-actions">
+          <a href="customer-notifications.html" class="topbar-icon-btn" title="Notifications">
+            <span class="badge">3</span>
+            🔔
+          </a>
+          <a href="customer-chat.html" class="topbar-icon-btn" title="Contact Venue Staff">
+            💬
+          </a>
+          <div class="topbar-user">
+            <div class="user-avatar" style="background:#2563eb;">M</div>
+            <div class="user-info">
+              <div class="user-name">Mahmud</div>
+              <div class="user-role">Customer</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="breadcrumb mb-16">
+          <a href="customer-dashboard.html">Dashboard</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current">Live Progress</span>
+        </div>
+
+        <div class="flex-between mb-24">
+          <div>
+            <h1 style="font-size:1.9rem; font-weight:800; margin-bottom:4px;">Live Progress Tracker</h1>
+            <p>Unified real-time logistics, on-site setup checklists, and culinary preparation across your active reservations.</p>
+          </div>
+          <div class="flex-center gap-8" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:6px 14px; border-radius:20px; font-size:0.8rem; font-weight:600; color:#166534;">
+            <span class="pulse-dot"></span> Live Feed Synchronized
+          </div>
+        </div>
+
+        <!-- Venue Selection Notice -->
+        <div class="mb-16">
+          <div style="font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--gray-500); margin-bottom:10px;">
+            Select a Booked Venue to View Live Progress:
+          </div>
+        </div>
+
+        <!-- Radio inputs for venue switcher -->
+        <input type="radio" name="venue_tab" id="tab-emerald" class="venue-radio" checked>
+        <input type="radio" name="venue_tab" id="tab-skyline" class="venue-radio">
+        <input type="radio" name="venue_tab" id="tab-glass" class="venue-radio">
+
+        <!-- Venue Cards Grid -->
+        <div class="venue-cards grid-3 gap-20 mb-32">
+          <!-- Card 1 -->
+          <label for="tab-emerald" class="venue-tab-card">
+            <div class="active-check">✓</div>
+            <div class="flex-between mb-8">
+              <span class="pill pill-confirmed" style="font-size:0.7rem;">CONFIRMED #BK-9021</span>
+              <span class="star">★ 4.9</span>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:4px; color:var(--gray-900);">Grand Emerald Ballroom</h3>
+            <div class="text-xs text-muted mb-8">📍 Downtown District · Wedding Reception</div>
+            <div class="flex-between text-xs pt-8" style="border-top:1px solid var(--gray-200);">
+              <span>📅 Dec 14, 2026 · 150 Guests</span>
+              <strong class="text-primary">68% Ready</strong>
+            </div>
+          </label>
+
+          <!-- Card 2 -->
+          <label for="tab-skyline" class="venue-tab-card">
+            <div class="active-check">✓</div>
+            <div class="flex-between mb-8">
+              <span class="pill pill-confirmed" style="font-size:0.7rem;">CONFIRMED #BK-9045</span>
+              <span class="star">★ 4.7</span>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:4px; color:var(--gray-900);">Skyline Vista Lounge</h3>
+            <div class="text-xs text-muted mb-8">📍 Waterfront District · Tech Conference</div>
+            <div class="flex-between text-xs pt-8" style="border-top:1px solid var(--gray-200);">
+              <span>📅 Oct 24, 2026 · 200 Guests</span>
+              <strong style="color:#059669;">42% Ready</strong>
+            </div>
+          </label>
+
+          <!-- Card 3 -->
+          <label for="tab-glass" class="venue-tab-card">
+            <div class="active-check">✓</div>
+            <div class="flex-between mb-8">
+              <span class="pill pill-inquiry" style="font-size:0.7rem;">CONFIRMED #BK-9102</span>
+              <span class="star">★ 4.85</span>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:4px; color:var(--gray-900);">The Glass Pavillion</h3>
+            <div class="text-xs text-muted mb-8">📍 Innovation Park · Product Launch</div>
+            <div class="flex-between text-xs pt-8" style="border-top:1px solid var(--gray-200);">
+              <span>📅 Dec 05, 2026 · 350 Guests</span>
+              <strong style="color:#7c3aed;">20% Ready</strong>
+            </div>
+          </label>
+        </div>
+
+        <!-- Venue Panels Container -->
+        <div class="venue-panels">
+          <!-- ================= PANEL 1: GRAND EMERALD BALLROOM ================= -->
+          <div id="panel-emerald" class="venue-panel">
+            <div class="card mb-24" style="background:linear-gradient(135deg, #1e3a8a 0%, #172554 100%); color:#fff; padding:24px 28px;">
+              <div class="flex-between" style="flex-wrap:wrap; gap:16px;">
+                <div>
+                  <span class="stat-badge" style="background:rgba(255,255,255,0.15); color:#fff; font-size:0.7rem;">SELECTED VENUE PROGRESS</span>
+                  <h2 style="color:#fff; font-size:1.6rem; margin:8px 0 4px;">Grand Emerald Ballroom — Wedding Reception</h2>
+                  <p style="color:#93c5fd; font-size:0.85rem;">Booking Ref: #BK-9021 · Dec 14, 2026 · Platinum Tier Package · Assigned Staff: Sarah Jenkins</p>
+                </div>
+                <div class="flex gap-12">
+                  <a href="customer-chat.html" class="btn btn-outline btn-sm" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.1);">
+                    💬 Contact Assigned Staff (Sarah)
+                  </a>
+                  <a href="client-invoice.html" class="btn btn-primary btn-sm">
+                    📄 View Invoice
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-2 gap-24" style="grid-template-columns:1fr 1fr; align-items:start;">
+              <!-- Left Column: Venue Setup & Milestones -->
+              <div class="card" style="padding:24px;">
+                <div class="card-header mb-16">
+                  <div class="card-title flex-center gap-8">
+                    <span>🏛️</span>
+                    <span>Venue Setup &amp; Booking Milestones</span>
+                  </div>
+                  <span class="pill pill-confirmed">On Schedule</span>
+                </div>
+
+                <div class="timeline mb-20">
+                  <div class="timeline-item done">
+                    <div class="timeline-dot">✓</div>
+                    <div class="timeline-title">Booking Approved &amp; Reserved</div>
+                    <div class="timeline-meta">Completed by Venue Administration · Confirmed</div>
+                  </div>
+                  <div class="timeline-item done">
+                    <div class="timeline-dot">✓</div>
+                    <div class="timeline-title">Floor Layout &amp; Table Arrangements</div>
+                    <div class="timeline-meta">15 Round Banquet Tables · Staging &amp; Bridal Dais Positioned</div>
+                  </div>
+                  <div class="timeline-item done">
+                    <div class="timeline-dot">✓</div>
+                    <div class="timeline-title">Dedicated Staff Coordinator Assigned</div>
+                    <div class="timeline-meta">Lead Coordinator: Sarah Jenkins · On-Site Management</div>
+                  </div>
+                  <div class="timeline-item active">
+                    <div class="timeline-dot">●</div>
+                    <div class="timeline-title">Audio/Visual Bose System Rigging</div>
+                    <div class="timeline-meta">Current Stage · Mic frequency check &amp; ambient lighting dimmers</div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot">⏱</div>
+                    <div class="timeline-title">Final Walkthrough &amp; Guest Welcome</div>
+                    <div class="timeline-meta">Scheduled Dec 14, 2026 at 16:30</div>
+                  </div>
+                </div>
+
+                <div style="background:var(--gray-50); border-radius:var(--radius-sm); padding:12px 16px; border:1px solid var(--gray-200);">
+                  <div class="flex-between text-xs">
+                    <span class="text-muted">Assigned Venue Staff:</span>
+                    <strong>Sarah Jenkins (Coordinator)</strong>
+                  </div>
+                  <div class="flex-between text-xs mt-8">
+                    <span class="text-muted">Staff Contact Channel:</span>
+                    <a href="customer-chat.html" class="text-primary font-semibold">Direct Staff Chat →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Catering & Culinary Readiness -->
+              <div class="card" style="padding:24px;">
+                <div class="card-header mb-16">
+                  <div class="card-title flex-center gap-8">
+                    <span>🍴</span>
+                    <span>Catering &amp; Kitchen Progress</span>
+                  </div>
+                  <span class="font-bold text-primary">68% Prepared</span>
+                </div>
+
+                <div class="mb-16">
+                  <div class="flex-between text-xs mb-4">
+                    <span class="text-muted">Kitchen Queue Execution</span>
+                    <strong>68% Complete</strong>
+                  </div>
+                  <div class="progress-bar-inner">
+                    <div class="progress-fill-emerald"></div>
+                  </div>
+                </div>
+
+                <div class="card mb-16" style="background:#f8fafc; border:1px solid var(--gray-200); padding:14px;">
+                  <div class="text-xs text-muted mb-4">Menu Package:</div>
+                  <div class="font-bold text-sm mb-4">Platinum 3-Course Dinner · 150 Covers</div>
+                  <div class="text-xs text-muted">Partner Kitchen: <strong>Artisan Commercial Culinary Team</strong></div>
+                </div>
+
+                <!-- Course Progress Items -->
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div class="flex-between p-10" style="background:#f0fdf4; border-radius:6px; border-left:3px solid #16a34a; padding:10px 12px;">
+                    <div>
+                      <div class="font-semibold text-xs">Appetizers: Truffle Bruschetta &amp; Shrimp Canapés</div>
+                      <div class="text-xs text-muted">Portioned, chilled &amp; plated for service</div>
+                    </div>
+                    <span class="pill pill-confirmed" style="font-size:0.65rem;">READY ✓</span>
+                  </div>
+
+                  <div class="flex-between p-10" style="background:#eff6ff; border-radius:6px; border-left:3px solid #2563eb; padding:10px 12px;">
+                    <div>
+                      <div class="font-semibold text-xs">Main Course: Herb Roasted Lamb &amp; Chilean Sea Bass</div>
+                      <div class="text-xs text-muted">In kitchen convection ovens · Braising stage</div>
+                    </div>
+                    <span class="pill pill-inquiry" style="font-size:0.65rem;">COOKING ●</span>
+                  </div>
+
+                  <div class="flex-between p-10" style="background:#fefce8; border-radius:6px; border-left:3px solid #ca8a04; padding:10px 12px;">
+                    <div>
+                      <div class="font-semibold text-xs">Dessert &amp; Open Bar: Berry Panna Cotta &amp; Cocktails</div>
+                      <div class="text-xs text-muted">Ingredients staged · Bar glassware prepped</div>
+                    </div>
+                    <span class="pill" style="background:#fef08a; color:#854d0e; font-size:0.65rem;">STAGED ⏱</span>
+                  </div>
+
+                  <div class="flex-between p-10" style="background:#fdf2f8; border-radius:6px; border-left:3px solid #db2777; padding:10px 12px;">
+                    <div>
+                      <div class="font-semibold text-xs">Special Dietary Requirements</div>
+                      <div class="text-xs text-muted">12 Vegetarian, 4 Gluten-Free marked &amp; segregated</div>
+                    </div>
+                    <span class="pill pill-confirmed" style="font-size:0.65rem;">VERIFIED ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= PANEL 2: SKYLINE VISTA LOUNGE ================= -->
+          <div id="panel-skyline" class="venue-panel">
+            <div class="card mb-24" style="background:linear-gradient(135deg, #065f46 0%, #064e3b 100%); color:#fff; padding:24px 28px;">
+              <div class="flex-between" style="flex-wrap:wrap; gap:16px;">
+                <div>
+                  <span class="stat-badge" style="background:rgba(255,255,255,0.15); color:#fff; font-size:0.7rem;">SELECTED VENUE PROGRESS</span>
+                  <h2 style="color:#fff; font-size:1.6rem; margin:8px 0 4px;">Skyline Vista Lounge — Tech Conference 2026</h2>
+                  <p style="color:#a7f3d0; font-size:0.85rem;">Booking Ref: #BK-9045 · Oct 24, 2026 · Corporate Gold Tier · Assigned Staff: Marcus Vance</p>
+                </div>
+                <div class="flex gap-12">
+                  <a href="customer-chat.html" class="btn btn-outline btn-sm" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.1);">
+                    💬 Contact Assigned Staff (Marcus)
+                  </a>
+                  <a href="client-invoice.html" class="btn btn-primary btn-sm">
+                    📄 View Invoice
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-2 gap-24" style="grid-template-columns:1fr 1fr; align-items:start;">
+              <div class="card" style="padding:24px;">
+                <div class="card-header mb-16">
+                  <div class="card-title flex-center gap-8">
+                    <span>🏛️</span>
+                    <span>Venue Setup &amp; Logistics</span>
+                  </div>
+                  <span class="pill pill-inquiry">In Preparation</span>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item done">
+                    <div class="timeline-dot">✓</div>
+                    <div class="timeline-title">Venue Confirmed &amp; Security Cleared</div>
+                    <div class="timeline-meta">Waterfront District Authority permit validated</div>
+                  </div>
+                  <div class="timeline-item done">
+                    <div class="timeline-dot">✓</div>
+                    <div class="timeline-title">AV &amp; Projector Rigging</div>
+                    <div class="timeline-meta">Dual 4K Laser Displays positioned &amp; tested</div>
+                  </div>
+                  <div class="timeline-item active">
+                    <div class="timeline-dot">●</div>
+                    <div class="timeline-title">Keynote Podium &amp; Delegate Seating</div>
+                    <div class="timeline-meta">Marcus Vance supervising 200 theater-style seats</div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot">⏱</div>
+                    <div class="timeline-title">Registration Desk &amp; Badge Printing Station</div>
+                    <div class="timeline-meta">Scheduled 2 hours prior to conference open</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="padding:24px;">
+                <div class="card-header mb-16">
+                  <div class="card-title flex-center gap-8">
+                    <span>🍴</span>
+                    <span>Conference Catering Readiness</span>
+                  </div>
+                  <span class="font-bold" style="color:#059669;">42% Prepared</span>
+                </div>
+                <div class="mb-16">
+                  <div class="flex-between text-xs mb-4">
+                    <span class="text-muted">Continental Breakfast &amp; Executive Lunch</span>
+                    <strong>42% Complete</strong>
+                  </div>
+                  <div class="progress-bar-inner">
+                    <div class="progress-fill-skyline"></div>
+                  </div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div class="flex-between" style="background:#f0fdf4; padding:10px 12px; border-radius:6px;">
+                    <div class="text-xs">
+                      <strong>Barista &amp; Espresso Station</strong>
+                      <div class="text-muted">Beans, grinders &amp; cold brew bar operational</div>
+                    </div>
+                    <span class="pill pill-confirmed" style="font-size:0.65rem;">READY ✓</span>
+                  </div>
+                  <div class="flex-between" style="background:#eff6ff; padding:10px 12px; border-radius:6px;">
+                    <div class="text-xs">
+                      <strong>Executive Buffet Lunch Boxes</strong>
+                      <div class="text-muted">Commercial partner kitchen preparing 200 units</div>
+                    </div>
+                    <span class="pill pill-inquiry" style="font-size:0.65rem;">PREPPING ●</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= PANEL 3: THE GLASS PAVILLION ================= -->
+          <div id="panel-glass" class="venue-panel">
+            <div class="card mb-24" style="background:linear-gradient(135deg, #4c1d95 0%, #3b0764 100%); color:#fff; padding:24px 28px;">
+              <div class="flex-between" style="flex-wrap:wrap; gap:16px;">
+                <div>
+                  <span class="stat-badge" style="background:rgba(255,255,255,0.15); color:#fff; font-size:0.7rem;">SELECTED VENUE PROGRESS</span>
+                  <h2 style="color:#fff; font-size:1.6rem; margin:8px 0 4px;">The Glass Pavillion — Product Launch</h2>
+                  <p style="color:#e9d5ff; font-size:0.85rem;">Booking Ref: #BK-9102 · Dec 05, 2026 · Bespoke Menu · Assigned Staff: Elena Rostova</p>
+                </div>
+                <div class="flex gap-12">
+                  <a href="customer-chat.html" class="btn btn-outline btn-sm" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.1);">
+                    💬 Contact Assigned Staff (Elena)
+                  </a>
+                  <a href="client-invoice.html" class="btn btn-primary btn-sm">
+                    📄 View Invoice
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-2 gap-24" style="grid-template-columns:1fr 1fr; align-items:start;">
+              <div class="card" style="padding:24px;">
+                <div class="card-header mb-16">
+                  <div class="card-title">Venue Setup Timeline</div>
+                  <span class="pill pill-inquiry">Queued</span>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item done">
+                    <div class="timeline-dot">✓</div>
+                    <div class="timeline-title">Contract &amp; Date Confirmation</div>
+                    <div class="timeline-meta">Dec 05 reservation locked</div>
+                  </div>
+                  <div class="timeline-item active">
+                    <div class="timeline-dot">●</div>
+                    <div class="timeline-title">Floor Plan Architectural Review</div>
+                    <div class="timeline-meta">Staff Elena Rostova verifying product display pedestals</div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-dot">⏱</div>
+                    <div class="timeline-title">Catering Lockdown &amp; Tasting Approval</div>
+                    <div class="timeline-meta">Locks 7 days prior to event</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="padding:24px;">
+                <div class="card-header mb-16">
+                  <div class="card-title">Bespoke Catering Overview</div>
+                  <span class="font-bold" style="color:#7c3aed;">20% Prepared</span>
+                </div>
+                <div class="mb-16">
+                  <div class="progress-bar-inner">
+                    <div class="progress-fill-glass"></div>
+                  </div>
+                </div>
+                <p class="text-xs text-muted">Bespoke product launch reception menu in design phase. Chef team reviewing custom hors d'œuvres requests with client Mahmud.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="page-footer">
+        <div>© 2026 VenuePro Enterprise Event Management. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-of-service.html">Terms of Service</a>
+          <a href="../contact-support.html">Contact Support</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
