@@ -82,9 +82,6 @@
         <a href="staff-event-setup.html" class="nav-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg> Event Setup Detail
         </a>
-        <a href="staff-chat.html" class="nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Customer Chat
-        </a>
       </nav>
       <div class="sidebar-footer">
         <a href="../login-role.html" class="nav-item" style="color:var(--gray-400);">
@@ -129,111 +126,53 @@
 </div>
 
 <div class="stats-grid mb-24">
-  <div class="stat-card"><div class="stat-label">Assigned Events Today</div><div class="stat-value">3</div><span class="stat-badge positive">All on schedule</span></div>
-  <div class="stat-card orange"><div class="stat-label">Open Tasks</div><div class="stat-value">7</div><span class="stat-badge neutral">2 High Priority</span></div>
-  <div class="stat-card green"><div class="stat-label">Completed This Week</div><div class="stat-value">12</div><span class="stat-badge positive">+3 vs last week</span></div>
-  <div class="stat-card"><div class="stat-label">Hours Logged</div><div class="stat-value">28h</div><span class="stat-badge neutral">Current shift: 4h</span></div>
+  <div class="stat-card"><div class="stat-label">Assigned Events Today</div><div class="stat-value">3</div></div>
+  <div class="stat-card orange"><div class="stat-label">Open Tasks</div><div class="stat-value">7</div></div>
+  <div class="stat-card green"><div class="stat-label">Completed This Week</div><div class="stat-value">12</div></div>
+  <div class="stat-card"><div class="stat-label">Hours Logged</div><div class="stat-value">28h</div></div>
 </div>
 
 <!-- Event Schedule Table with selectable rows -->
 <div class="card mb-24">
   <div class="card-header">
-    <div class="card-title">Today's Event Schedule — Select an Event to Load Tasks</div>
-  </div>
-  <div style="font-size:.8rem; color:var(--primary); margin-bottom:12px; font-weight:600;">
-    ↓ Click a row to select an event and view its setup checklist below
+    <div class="card-title">Today's Event Schedule</div>
   </div>
 
-  <!-- Table header -->
-  <div style="display:grid; grid-template-columns:28px 1fr 1fr 80px 120px 140px; gap:0 12px; padding:8px 14px; border-bottom:2px solid var(--gray-200);">
-    <span></span>
-    <span class="text-xs font-bold text-muted">EVENT NAME</span>
-    <span class="text-xs font-bold text-muted">VENUE</span>
-    <span class="text-xs font-bold text-muted">CALL TIME</span>
-    <span class="text-xs font-bold text-muted">STATUS</span>
-    <span class="text-xs font-bold text-muted">QUICK ACTION</span>
-  </div>
-
-  <!-- Row 1 — Wedding (pre-selected) -->
-  <div class="event-row">
-    <input type="radio" name="event-select" id="ev1" checked>
-    <label for="ev1">
-      <span class="radio-dot"></span>
-      <span class="font-semibold">Wedding at Grand Emerald</span>
-      <span class="text-muted text-sm">Grand Emerald Ballroom</span>
-      <span class="font-semibold">14:00</span>
-      <span class="pill pill-in-progress">IN SETUP</span>
-      <a href="staff-event-setup.html" class="btn btn-outline btn-sm" onclick="event.stopPropagation()">Open Full Setup</a>
-    </label>
-  </div>
-
-  <!-- Row 2 -->
-  <div class="event-row">
-    <input type="radio" name="event-select" id="ev2">
-    <label for="ev2">
-      <span class="radio-dot"></span>
-      <span class="font-semibold">Tech Summit Keynote</span>
-      <span class="text-muted text-sm">Skyline Vista Lounge</span>
-      <span class="font-semibold">17:30</span>
-      <span class="pill pill-pending">UPCOMING</span>
-      <a href="staff-event-setup.html" class="btn btn-ghost btn-sm" onclick="event.stopPropagation()">View Spec</a>
-    </label>
-  </div>
-
-  <!-- Row 3 -->
-  <div class="event-row">
-    <input type="radio" name="event-select" id="ev3">
-    <label for="ev3">
-      <span class="radio-dot"></span>
-      <span class="font-semibold">Art Gala Reception</span>
-      <span class="text-muted text-sm">Brick &amp; Steel Gallery</span>
-      <span class="font-semibold">19:00</span>
-      <span class="pill pill-pending">UPCOMING</span>
-      <a href="staff-event-setup.html" class="btn btn-ghost btn-sm" onclick="event.stopPropagation()">View Spec</a>
-    </label>
-  </div>
-</div>
-
-<!-- Dynamic Checklist (always shown for selected event) -->
-<div class="grid-2" style="gap:24px; align-items:start;">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">Setup Checklist — Wedding at Grand Emerald</div>
-      <span class="text-xs text-muted">Check tasks off as you complete them</span>
-    </div>
-
-    <div class="task-item"><input type="checkbox" id="t1" checked><label for="t1"><span class="task-check-box"></span>Floor layout &amp; 15 round table placement<span class="task-badge"><span class="pill pill-confirmed" style="font-size:.6rem;">DONE</span></span></label></div>
-    <div class="task-item"><input type="checkbox" id="t2" checked><label for="t2"><span class="task-check-box"></span>Bose audio rig and wireless mic array setup<span class="task-badge"><span class="pill pill-confirmed" style="font-size:.6rem;">DONE</span></span></label></div>
-    <div class="task-item"><input type="checkbox" id="t3"><label for="t3"><span class="task-check-box"></span>Catering prep station &amp; bar glassware stocking<span class="task-badge priority-high">⚑ HIGH</span></label></div>
-    <div class="task-item"><input type="checkbox" id="t4"><label for="t4"><span class="task-check-box"></span>Valet parking signage &amp; cone placement<span class="task-badge priority-high">⚑ HIGH</span></label></div>
-    <div class="task-item"><input type="checkbox" id="t5"><label for="t5"><span class="task-check-box"></span>Security personnel briefing &amp; radio distribution</label></div>
-    <div class="task-item"><input type="checkbox" id="t6"><label for="t6"><span class="task-check-box"></span>Guest registration desk setup &amp; badge printing</label></div>
-    <div class="task-item"><input type="checkbox" id="t7"><label for="t7"><span class="task-check-box"></span>LED video wall feed test from main AV control room</label></div>
-    <div class="task-item"><input type="checkbox" id="t8"><label for="t8"><span class="task-check-box"></span>Floral &amp; decor delivery receipt sign-off</label></div>
-
-    <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--gray-200);">
-      <a href="staff-event-setup.html" class="btn btn-primary btn-full" style="background:#16a34a; border-color:#16a34a;">✓ Mark Event as Setup Complete</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header"><div class="card-title">Event Contacts</div></div>
-    <div class="mb-12">
-      <div class="text-xs text-muted mb-2">Lead Client</div>
-      <div class="font-bold">Mahmud (Enterprise Partners Ltd.)</div>
-      <div class="text-xs text-primary">mahmud@enterprise.com • +1 (555) 123-4567</div>
-    </div>
-    <div class="mb-12">
-      <div class="text-xs text-muted mb-2">Catering Partner</div>
-      <div class="font-bold">Chef Alex Rivera — Artisan Catering Co.</div>
-      <div class="text-xs text-primary">+1 (555) 019-2834</div>
-    </div>
-    <div class="mb-16">
-      <div class="text-xs text-muted mb-2">Admin On-Call</div>
-      <div class="font-bold">Alex Sterling (Systems Admin)</div>
-      <div class="text-xs text-primary">alex.sterling@venuepro.internal</div>
-    </div>
-    <a href="../customer/customer-chat.html" class="btn btn-outline btn-full btn-sm">Open Client Chat →</a>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>EVENT NAME</th>
+          <th>VENUE</th>
+          <th>CALL TIME</th>
+          <th>STATUS</th>
+          <th>QUICK ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-semibold">Wedding at Grand Emerald</div></td>
+          <td>Grand Emerald Ballroom</td>
+          <td class="font-semibold">14:00</td>
+          <td><span class="pill pill-in-progress">IN SETUP</span></td>
+          <td><a href="staff-event-setup.html" class="btn btn-outline btn-sm">Open Full Setup</a></td>
+        </tr>
+        <tr>
+          <td><div class="font-semibold">Tech Summit Keynote</div></td>
+          <td>Skyline Vista Lounge</td>
+          <td class="font-semibold">17:30</td>
+          <td><span class="pill pill-pending">UPCOMING</span></td>
+          <td><a href="staff-event-setup.html" class="btn btn-ghost btn-sm">View Spec</a></td>
+        </tr>
+        <tr>
+          <td><div class="font-semibold">Art Gala Reception</div></td>
+          <td>Brick &amp; Steel Gallery</td>
+          <td class="font-semibold">19:00</td>
+          <td><span class="pill pill-pending">UPCOMING</span></td>
+          <td><a href="staff-event-setup.html" class="btn btn-ghost btn-sm">View Spec</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
