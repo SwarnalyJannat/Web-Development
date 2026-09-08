@@ -55,9 +55,6 @@
         <a href="admin-reports.html" class="nav-item active">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Reports &amp; Analytics
         </a>
-        <a href="notification-center.html" class="nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Notifications
-        </a>
       </nav>
       <div class="sidebar-footer">
         <a href="../login-role.html" class="nav-item" style="color:var(--gray-400);">
@@ -79,9 +76,6 @@
           <a href="notification-center.html" class="topbar-icon-btn" title="Notifications">
             <span class="badge">8</span>
             🔔
-          </a>
-          <a href="notification-center.html" class="topbar-icon-btn" title="Messages & Alerts">
-            💬
           </a>
           <div class="topbar-user">
             <div class="user-avatar" style="background:#0f172a;">AS</div>
@@ -121,12 +115,6 @@
     <div class="stat-value">$716</div>
     <span class="stat-badge positive">+5.4%</span>
     <div class="stat-icon">📈</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-label">Client Satisfaction</div>
-    <div class="stat-value">4.85★</div>
-    <span class="stat-badge positive">98% positive</span>
-    <div class="stat-icon">⭐</div>
   </div>
 </div>
 
@@ -206,9 +194,9 @@
           <td>Jane Doe Events</td>
           <td>Grand Ballroom</td>
           <td><span class="pill pill-in-progress">Booking</span></td>
-          <td class="font-bold">$5,809.32</td>
+          <td class="font-bold">$4,890.00</td>
           <td><span class="pill pill-confirmed">PAID</span></td>
-          <td><a href="admin-booking-approval.html" class="btn btn-ghost btn-sm">View</a></td>
+          <td><button class="btn btn-ghost btn-sm" onclick="showTransactionModal('TXN-0091', 'Sep 06, 2026', 'Jane Doe Events', 'Grand Ballroom', 'Booking Reservation', '$4,890.00', 'Visa •••• 4242', 'ch_3M4o9281a9', 'PAID')">View</button></td>
         </tr>
         <tr>
           <td class="font-bold text-primary">#TXN-0090</td>
@@ -228,7 +216,7 @@
           <td><span class="pill pill-in-progress">Booking</span></td>
           <td class="font-bold">$3,450.00</td>
           <td><span class="pill pill-confirmed">PAID</span></td>
-          <td><a href="admin-booking-approval.html" class="btn btn-ghost btn-sm">View</a></td>
+          <td><button class="btn btn-ghost btn-sm" onclick="showTransactionModal('TXN-0089', 'Sep 04, 2026', 'Luxe Media Inc.', 'Riverside Suite', 'Executive Booking', '$3,450.00', 'Mastercard •••• 8812', 'ch_9Kp2841v9', 'PAID')">View</button></td>
         </tr>
         <tr>
           <td class="font-bold text-primary">#TXN-0088</td>
@@ -238,7 +226,7 @@
           <td><span class="pill" style="background:#fef9c3;color:#854d0e;">Catering</span></td>
           <td class="font-bold">$1,850.00</td>
           <td><span class="pill pill-confirmed">PAID</span></td>
-          <td><a href="admin-review-caterer.html" class="btn btn-ghost btn-sm">View</a></td>
+          <td><button class="btn btn-ghost btn-sm" onclick="showTransactionModal('TXN-0088', 'Sep 03, 2026', 'Artisan Catering', 'Grand Ballroom', 'Catering Service Package', '$1,850.00', 'Direct ACH Transfer', 'ach_41872911b', 'PAID')">View</button></td>
         </tr>
         <tr>
           <td class="font-bold text-primary">#TXN-0087</td>
@@ -373,5 +361,97 @@
       </footer>
     </div>
   </div>
+
+  <!-- Transaction Details Modal -->
+  <div id="txn-modal" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+    <div class="card" style="max-width:560px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:var(--shadow-lg); margin:0;">
+      <div class="flex-between mb-16" style="border-bottom:1px solid var(--gray-200); padding-bottom:12px;">
+        <div class="flex gap-8" style="align-items:center;">
+          <h3 style="margin:0;">Transaction Details</h3>
+          <span id="txn-modal-id" class="font-bold text-primary" style="font-size:1.05rem;">#TXN-0091</span>
+        </div>
+        <button type="button" onclick="closeTxnModal()" style="background:none; border:none; font-size:22px; cursor:pointer; color:var(--gray-500); line-height:1;">&times;</button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; background:var(--gray-50); padding:12px 16px; border-radius:var(--radius-sm);">
+        <div>
+          <div class="text-xs text-muted font-bold">PAYMENT STATUS</div>
+          <span class="pill pill-confirmed" id="txn-modal-status" style="margin-top:4px; display:inline-block;">PAID IN FULL ✓</span>
+        </div>
+        <div style="text-align:right;">
+          <div class="text-xs text-muted font-bold">TOTAL AMOUNT</div>
+          <div id="txn-modal-amount" style="font-size:1.4rem; font-weight:800; color:var(--navy-900);">$4,890.00</div>
+        </div>
+      </div>
+
+      <div class="grid-2 gap-16 mb-20">
+        <div>
+          <div class="text-xs text-muted font-bold mb-4">CLIENT / CUSTOMER</div>
+          <div id="txn-modal-client" class="font-bold">Jane Doe Events</div>
+        </div>
+        <div>
+          <div class="text-xs text-muted font-bold mb-4">TRANSACTION DATE</div>
+          <div id="txn-modal-date" class="font-medium">Sep 06, 2026</div>
+        </div>
+        <div>
+          <div class="text-xs text-muted font-bold mb-4">VENUE / SERVICE</div>
+          <div id="txn-modal-venue" class="font-medium">Grand Ballroom</div>
+        </div>
+        <div>
+          <div class="text-xs text-muted font-bold mb-4">TRANSACTION TYPE</div>
+          <div id="txn-modal-type" class="font-medium">Booking Reservation</div>
+        </div>
+        <div>
+          <div class="text-xs text-muted font-bold mb-4">PAYMENT METHOD</div>
+          <div id="txn-modal-method" class="font-medium">Visa •••• 4242</div>
+        </div>
+        <div>
+          <div class="text-xs text-muted font-bold mb-4">GATEWAY REFERENCE</div>
+          <div id="txn-modal-ref" class="font-mono text-xs text-muted">ch_3M4o9281a9</div>
+        </div>
+      </div>
+
+      <div class="card mb-20" style="background:#f8fafc; border:1px solid var(--gray-200); padding:12px 16px;">
+        <div class="text-xs text-muted font-bold mb-8">SETTLEMENT DETAILS</div>
+        <div class="flex-between text-sm mb-4">
+          <span>Processor Network</span>
+          <span class="font-semibold">Stripe Enterprise Merchant</span>
+        </div>
+        <div class="flex-between text-sm mb-4">
+          <span>Settlement Status</span>
+          <span class="text-success font-semibold">Cleared &amp; Disbursed</span>
+        </div>
+        <div class="flex-between text-sm">
+          <span>Merchant Account</span>
+          <span class="font-mono text-xs">VenuePro Operating LLC (**892)</span>
+        </div>
+      </div>
+
+      <div class="flex gap-12">
+        <button type="button" class="btn btn-ghost" style="flex:1;" onclick="closeTxnModal()">Close</button>
+        <a href="../customer/client-invoice.html" class="btn btn-outline" style="flex:1; text-align:center; justify-content:center;">View Official Tax Invoice</a>
+        <button type="button" class="btn btn-primary" style="flex:1;" onclick="window.print()">Print Receipt</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTransactionModal(id, date, client, venue, type, amount, method, ref, status) {
+      document.getElementById('txn-modal-id').innerText = '#' + id;
+      document.getElementById('txn-modal-date').innerText = date;
+      document.getElementById('txn-modal-client').innerText = client;
+      document.getElementById('txn-modal-venue').innerText = venue;
+      document.getElementById('txn-modal-type').innerText = type;
+      document.getElementById('txn-modal-amount').innerText = amount;
+      document.getElementById('txn-modal-method').innerText = method;
+      document.getElementById('txn-modal-ref').innerText = ref;
+      document.getElementById('txn-modal-status').innerText = status + ' IN FULL ✓';
+      document.getElementById('txn-modal').style.display = 'flex';
+    }
+
+    function closeTxnModal() {
+      document.getElementById('txn-modal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>

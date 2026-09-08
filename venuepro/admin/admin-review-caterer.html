@@ -38,9 +38,6 @@
         <a href="admin-reports.html" class="nav-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Reports &amp; Analytics
         </a>
-        <a href="notification-center.html" class="nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Notifications
-        </a>
       </nav>
       <div class="sidebar-footer">
         <a href="../login-role.html" class="nav-item" style="color:var(--gray-400);">
@@ -62,9 +59,6 @@
           <a href="notification-center.html" class="topbar-icon-btn" title="Notifications">
             <span class="badge">8</span>
             🔔
-          </a>
-          <a href="notification-center.html" class="topbar-icon-btn" title="Messages & Alerts">
-            💬
           </a>
           <div class="topbar-user">
             <div class="user-avatar" style="background:#0f172a;">AS</div>
@@ -113,7 +107,19 @@
     <h3 class="mb-16">Application Decision</h3>
     <a href="admin-catering-management.html" class="btn btn-primary btn-full mb-12" style="background:#16a34a; border-color:#16a34a;">✓ Grant Certified Caterer Badge</a>
     <a href="admin-catering-management.html" class="btn btn-danger btn-outline btn-full mb-12">✗ Reject Application</a>
-    <button class="btn btn-ghost btn-full">Request Additional Inspection</button>
+    <button id="btn-request-inspection" class="btn btn-ghost btn-full" onclick="toggleInspectionBox()">Request Additional Inspection</button>
+    
+    <div id="inspection-form-container" style="display:none; margin-top:16px; padding-top:16px; border-top:1px solid var(--gray-200);">
+      <label class="form-label" style="font-weight:600; margin-bottom:8px; display:block;">Specify Inspection Requirements / Notes:</label>
+      <textarea id="inspection-notes" class="form-control" rows="4" placeholder="Enter specific health code, equipment compliance, or safety documentation requested..." style="width:100%; margin-bottom:12px; font-family:inherit; resize:vertical;"></textarea>
+      <div style="display:flex; gap:8px;">
+        <button type="button" class="btn btn-primary btn-sm" style="flex:1;" onclick="submitInspectionRequest()">Send Request</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="toggleInspectionBox()">Cancel</button>
+      </div>
+      <div id="inspection-sent-alert" style="display:none; margin-top:12px; padding:10px 14px; background:#dcfce7; color:#166534; border:1px solid #bbf7d0; border-radius:6px; font-size:13px; font-weight:600;">
+        ✓ Additional inspection request sent to Epicurean Events Co.
+      </div>
+    </div>
   </div>
 </div>
 </main>
@@ -127,5 +133,39 @@
       </footer>
     </div>
   </div>
+  <script>
+    function toggleInspectionBox() {
+      const box = document.getElementById('inspection-form-container');
+      const isHidden = box.style.display === 'none';
+      box.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) {
+        document.getElementById('inspection-notes').focus();
+      }
+    }
+
+    function submitInspectionRequest() {
+      const notes = document.getElementById('inspection-notes');
+      const text = notes.value.trim();
+      if (!text) {
+        alert('Please enter your inspection requirements before sending.');
+        notes.focus();
+        return;
+      }
+      document.getElementById('inspection-sent-alert').style.display = 'block';
+      notes.disabled = true;
+      const statusPill = document.querySelector('.pill-pending');
+      if (statusPill) {
+        statusPill.textContent = 'ADDITIONAL INFO REQUESTED';
+        statusPill.style.background = '#fef3c7';
+        statusPill.style.color = '#b45309';
+      }
+      setTimeout(() => {
+        const btn = document.getElementById('btn-request-inspection');
+        btn.textContent = 'Inspection Requested ✓';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+      }, 600);
+    }
+  </script>
 </body>
 </html>
