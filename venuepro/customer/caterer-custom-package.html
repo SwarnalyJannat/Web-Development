@@ -153,7 +153,7 @@
       </nav>
       <div class="sidebar-footer">
         <a href="../login-role.html" class="nav-item" style="color:var(--gray-400);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Switch Role / Logout
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Log out
         </a>
       </div>
     </aside>
@@ -213,80 +213,12 @@
 
           <!-- Left Column: Builder Form -->
           <div>
-            <!-- Section 1: Event Date & Guest Headcount -->
-            <div class="builder-section">
-              <div class="builder-section-header">
-                <div class="builder-section-title">
-                  <span>📅</span> 1. Event Schedule &amp; Headcount
-                </div>
-                <span class="builder-section-badge" style="background:#eff6ff; color:var(--primary);">Step 1 of 5</span>
-              </div>
-
-              <div class="form-row mb-16">
-                <div class="form-group">
-                  <label class="form-label">Event Date *</label>
-                  <input type="date" class="form-control" value="2026-11-20" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Meal Service Time *</label>
-                  <select class="form-control">
-                    <option selected>Evening Dinner Service (18:30 – 21:30)</option>
-                    <option>Corporate Luncheon Service (12:00 – 14:30)</option>
-                    <option>Afternoon Cocktail &amp; Canapés (16:00 – 18:30)</option>
-                    <option>Late-Night Gala Feast (21:00 – 01:00)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row mb-16">
-                <div class="form-group">
-                  <label class="form-label">Paired Venue Space *</label>
-                  <select class="form-control">
-                    <option selected>Grand Emerald Ballroom (Downtown District)</option>
-                    <option>Skyline Vista Lounge (North District)</option>
-                    <option>Crystal Tech Pavilion (Innovation District)</option>
-                    <option>The Brick &amp; Steel Gallery (Arts District)</option>
-                    <option>Other / Private Location</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Assigned Culinary Team *</label>
-                  <select class="form-control">
-                    <option selected>Artisan Catering Co. (Chef Alex Rivera)</option>
-                    <option>Epicurean Events (Chef Marcus Vance)</option>
-                    <option>Boutique Bites Haute Cuisine</option>
-                    <option>Request Competitive Bids from All Partners</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Headcount Controls -->
-              <div class="form-group">
-                <label class="form-label">Guest Count (Headcount) *</label>
-                <div class="headcount-wrap">
-                  <div class="headcount-stepper">
-                    <button type="button" class="stepper-btn">−</button>
-                    <input type="text" class="stepper-val" value="150">
-                    <button type="button" class="stepper-btn">+</button>
-                  </div>
-                  <div class="headcount-presets">
-                    <span class="preset-chip">50 Guests</span>
-                    <span class="preset-chip">100 Guests</span>
-                    <span class="preset-chip active">150 Guests</span>
-                    <span class="preset-chip">200 Guests</span>
-                    <span class="preset-chip">300 Guests</span>
-                    <span class="preset-chip">500+ Guests</span>
-                  </div>
-                </div>
-                <div class="form-hint" style="margin-top:6px;">Standard capacity accommodated: 25 to 600 attendees. Pricing auto-scales per head.</div>
-              </div>
-            </div>
 
             <!-- Section 2: Cuisine Specialization -->
             <div class="builder-section">
               <div class="builder-section-header">
                 <div class="builder-section-title">
-                  <span>🍳</span> 2. Food Cuisine &amp; Culinary Style
+                  <span>🍳</span> 1. Food Cuisine &amp; Culinary Style
                 </div>
                 <span class="builder-section-badge" style="background:#fefce8; color:#a16207;">Choose Primary Cuisine</span>
               </div>
@@ -364,7 +296,7 @@
             <div class="builder-section">
               <div class="builder-section-header">
                 <div class="builder-section-title">
-                  <span>🍽️</span> 3. Dining Format &amp; Service Style
+                  <span>🍽️</span> 2. Dining Format &amp; Service Style
                 </div>
                 <span class="builder-section-badge" style="background:#f0fdf4; color:#15803d;">Floor Execution</span>
               </div>
@@ -400,7 +332,7 @@
             <div class="builder-section">
               <div class="builder-section-header">
                 <div class="builder-section-title">
-                  <span>📜</span> 4. Custom Menu Course Builder
+                  <span>📜</span> 3. Custom Menu Course Builder
                 </div>
                 <span class="builder-section-badge" style="background:#faf5ff; color:#7e22ce;">Select Desired Dishes</span>
               </div>
@@ -585,7 +517,7 @@
             <div class="builder-section">
               <div class="builder-section-header">
                 <div class="builder-section-title">
-                  <span>🥗</span> 5. Dietary Requirements &amp; Certifications
+                  <span>🥗</span> 4. Dietary Requirements &amp; Certifications
                 </div>
                 <span class="builder-section-badge" style="background:#fee2e2; color:#b91c1c;">Special Precautions</span>
               </div>
@@ -619,7 +551,7 @@
             <div class="builder-section">
               <div class="builder-section-header">
                 <div class="builder-section-title">
-                  <span>👔</span> 6. On-Site Staffing &amp; Equipment Add-ons
+                  <span>👔</span> 5. On-Site Staffing &amp; Equipment Add-ons
                 </div>
                 <span class="builder-section-badge" style="background:var(--gray-100); color:var(--gray-700);">Optional Upgrades</span>
               </div>
@@ -665,7 +597,6 @@
             <div class="sticky-summary">
               <div class="flex-between mb-16">
                 <div>
-                  <span class="service-badge mb-4">✨ BESPOKE PROPOSAL</span>
                   <h3 style="font-size:1.25rem; font-weight:800; margin:4px 0 0;">Live Package Estimate</h3>
                 </div>
                 <span class="pill pill-in-progress" style="font-size:0.65rem;">DRAFT</span>
@@ -674,7 +605,7 @@
               <div class="card mb-16" style="background:var(--gray-50); border:1px solid var(--gray-200); padding:12px;">
                 <div class="text-xs text-muted">Culinary Partner</div>
                 <div class="font-bold text-sm">Artisan Catering Co.</div>
-                <div class="text-xs text-primary">Chef Alex Rivera · ★ 4.95 (140 reviews)</div>
+                <div class="text-xs text-primary">Chef Alex Rivera</div>
                 <div class="text-xs text-muted mt-4">Venue: Grand Emerald Ballroom · Nov 20, 2026</div>
               </div>
 
@@ -720,45 +651,23 @@
                 <span>Subtotal</span>
                 <strong>$22,180.00</strong>
               </div>
-              <div class="summary-metric">
-                <span>Platform Service Fee (10%)</span>
-                <span>$2,218.00</span>
-              </div>
-              <div class="summary-metric">
-                <span>VAT &amp; Catering Tax (8%)</span>
-                <span>$1,951.84</span>
-              </div>
 
               <div class="summary-total">
                 <div>
                   <div style="font-size:0.75rem; color:var(--gray-500); font-weight:700; text-transform:uppercase;">TOTAL ESTIMATE</div>
-                  <div style="font-size:1.6rem; font-weight:800; color:var(--primary);">$26,349.84</div>
+                  <div style="font-size:1.6rem; font-weight:800; color:var(--primary);">$22,180.00</div>
                 </div>
                 <div style="text-align:right;">
                   <div class="text-xs text-muted">Per Head Rate</div>
-                  <div class="font-bold text-success" style="font-size:1.05rem;">$175.66 / guest</div>
+                  <div class="font-bold text-success" style="font-size:1.05rem;">$147.87 / guest</div>
                 </div>
               </div>
 
-              <!-- Action Buttons -->
-              <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
+              <!-- Action Button -->
+              <div style="margin-top:20px;">
                 <a href="booking-summary-payment.html" class="btn btn-primary btn-full" style="font-weight:700; padding:12px;">
-                  Attach to Venue Booking &amp; Pay →
+                  Proceed to Pay
                 </a>
-                <a href="booking-summary-payment.html" class="btn btn-outline btn-full btn-sm">
-                  Attach to Existing Booking (#BK-9847)
-                </a>
-                <a href="customer-catering-progress.html" class="btn btn-outline btn-full btn-sm">
-                  Request Custom Quote from Chef
-                </a>
-                <a href="customer-chat.html" class="btn btn-ghost btn-full btn-sm">
-                  💬 Consult with Chef Alex Rivera
-                </a>
-              </div>
-
-              <div class="card mt-16" style="background:#f0fdf4; border:1px solid #86efac; padding:12px; text-align:center;">
-                <div class="text-xs font-bold text-success mb-2">🔒 VENUEPRO CATERING GUARANTEE</div>
-                <div class="text-xs text-muted" style="line-height:1.4;">Tasting session included for bookings over $5,000. Changes permitted up to 7 business days prior to event date.</div>
               </div>
             </div>
           </div>
