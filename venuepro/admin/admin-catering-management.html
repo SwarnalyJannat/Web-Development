@@ -5,17 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VenuePro Admin – Catering Oversight</title>
   <link rel="stylesheet" href="../css/style.css">
-  <style>
-    .upload-zone { border:2px dashed var(--gray-300); border-radius:var(--radius); padding:24px; text-align:center; background:var(--gray-50); transition:border-color .2s; }
-    .upload-zone:hover { border-color:var(--primary); background:#eff6ff; }
-    .upload-zone input[type=file] { display:none; }
-    .upload-zone label { display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; }
-    .upload-icon { font-size:28px; }
-    .upload-text { font-size:.85rem; color:var(--gray-600); }
-    .upload-hint { font-size:.7rem; color:var(--gray-400); }
-    .section-divider { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--gray-500); display:flex; align-items:center; gap:12px; margin:24px 0 16px; }
-    .section-divider::after { content:''; flex:1; height:1px; background:var(--gray-200); }
-  </style>
 </head>
 <body>
   <input type="checkbox" id="sidebar-toggle">
@@ -86,9 +75,7 @@
     <h1>Catering Management Oversight</h1>
     <p>Certified culinary partners, quality assurance scores, and active kitchen queues.</p>
   </div>
-  <button class="btn btn-primary" onclick="document.getElementById('add-caterer-modal').style.display='flex'">
-    + Add Caterer
-  </button>
+  <a href="admin-add-caterer.html" class="btn btn-primary">+ Add New Caterer</a>
 </div>
 
 <div class="grid-2 gap-24">
@@ -121,110 +108,6 @@
       </div>
       <div class="text-xs text-muted">Submitted 1 day ago • Commercial Kitchen Downtown</div>
     </div>
-  </div>
-</div>
-
-<!-- Add Caterer Modal -->
-<div id="add-caterer-modal" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
-  <div style="background:#fff; border-radius:var(--radius); padding:32px; max-width:760px; width:95%; max-height:90vh; overflow-y:auto; box-shadow:var(--shadow-xl); position:relative;">
-    <button onclick="document.getElementById('add-caterer-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:var(--gray-100);border:none;border-radius:50%;width:32px;height:32px;font-size:1.1rem;cursor:pointer;color:var(--gray-600);">✕</button>
-    <h2 class="mb-4">Add New Caterer</h2>
-    <p class="mb-24" style="color:var(--gray-500);">Register a new culinary partner and provision their kitchen account.</p>
-
-    <form onsubmit="document.getElementById('add-caterer-modal').style.display='none'; return false;">
-
-      <!-- Business Info -->
-      <div class="section-divider">Business Information</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Kitchen / Business Name *</label>
-          <input type="text" class="form-control" placeholder="e.g. Artisan Catering Co." required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Business Email *</label>
-          <input type="email" class="form-control" placeholder="contact@artisancatering.com" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Phone Number</label>
-          <input type="tel" class="form-control" placeholder="+1 (555) 000-0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Business Registration Number *</label>
-          <input type="text" class="form-control" placeholder="BRN-0000-0000" required>
-        </div>
-      </div>
-
-      <!-- Account Credentials -->
-      <div class="section-divider">Account Credentials</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Password *</label>
-          <input type="password" class="form-control" placeholder="Create login password" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Confirm Password *</label>
-          <input type="password" class="form-control" placeholder="Confirm password" required>
-        </div>
-      </div>
-
-      <!-- Culinary Details -->
-      <div class="section-divider">Culinary Details</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Specialty / Cuisine Type *</label>
-          <select class="form-control">
-            <option>Gala Dinners</option>
-            <option>Plated Tasting</option>
-            <option>Canapés &amp; Canteen</option>
-            <option>Corporate Lunch</option>
-            <option>Custom / Multi-Cuisine</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Assigned Venue(s)</label>
-          <select class="form-control">
-            <option>Grand Emerald Ballroom</option>
-            <option>Skyline Vista Lounge</option>
-            <option>Crystal Tech Pavilion</option>
-            <option>The Brick &amp; Steel Gallery</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Documents -->
-      <div class="section-divider">Verification Documents</div>
-      <div class="grid-2 gap-20 mb-24">
-        <div>
-          <label class="form-label">Food Safety Certificate *</label>
-          <div class="upload-zone">
-            <label for="cat-cert-upload">
-              <span class="upload-icon">📄</span>
-              <span class="upload-text font-semibold">Click to upload Certificate</span>
-              <span class="upload-hint">PDF, JPG, PNG — max 10 MB</span>
-            </label>
-            <input id="cat-cert-upload" type="file" accept=".pdf,.jpg,.jpeg,.png">
-          </div>
-        </div>
-        <div>
-          <label class="form-label">Business License Scan *</label>
-          <div class="upload-zone">
-            <label for="cat-license-upload">
-              <span class="upload-icon">🪪</span>
-              <span class="upload-text font-semibold">Click to upload License</span>
-              <span class="upload-hint">PDF, JPG, PNG — max 5 MB</span>
-            </label>
-            <input id="cat-license-upload" type="file" accept=".pdf,.jpg,.jpeg,.png">
-          </div>
-        </div>
-      </div>
-
-      <div class="flex gap-12 mt-24">
-        <button type="button" class="btn btn-ghost" style="flex:1;" onclick="document.getElementById('add-caterer-modal').style.display='none'">Cancel</button>
-        <button type="submit" class="btn btn-primary" style="flex:2;">Register Caterer &amp; Provision Account →</button>
-      </div>
-    </form>
   </div>
 </div>
 </main>
