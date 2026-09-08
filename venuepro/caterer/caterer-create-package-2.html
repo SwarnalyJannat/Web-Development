@@ -90,31 +90,33 @@
       <h2>Step 2: Define Menu Courses</h2>
       <p>Configure appetizers, main entrees, and desserts.</p>
     </div>
-    <button type="button" class="btn btn-outline btn-sm">+ Add Course</button>
+    <button type="button" class="btn btn-outline btn-sm" onclick="addCourse()">+ Add Course</button>
   </div>
 
   <form action="caterer-create-package-3.html">
-    <div class="card mb-16" style="background:var(--gray-50);">
-      <div class="font-bold text-sm mb-8">Course 1: Canapés & Appetizers</div>
-      <div class="grid-2 gap-12 mb-8">
-        <input type="text" class="form-control" value="Seared Scallops with Cauliflower Puree">
-        <input type="text" class="form-control" value="Truffled Wild Mushroom Tartlet (V)">
+    <div id="courses-container">
+      <div class="card mb-16" style="background:var(--gray-50);">
+        <div class="font-bold text-sm mb-8">Course 1: Canapés & Appetizers</div>
+        <div class="grid-2 gap-12 mb-8">
+          <input type="text" class="form-control" value="Seared Scallops with Cauliflower Puree">
+          <input type="text" class="form-control" value="Truffled Wild Mushroom Tartlet (V)">
+        </div>
       </div>
-    </div>
 
-    <div class="card mb-16" style="background:var(--gray-50);">
-      <div class="font-bold text-sm mb-8">Course 2: Main Entrée Selection</div>
-      <div class="grid-2 gap-12 mb-8">
-        <input type="text" class="form-control" value="Grass-fed Prime Ribeye with Herb Demi-Glace">
-        <input type="text" class="form-control" value="Pan-Roasted Chilean Sea Bass with Saffron Velouté">
+      <div class="card mb-16" style="background:var(--gray-50);">
+        <div class="font-bold text-sm mb-8">Course 2: Main Entrée Selection</div>
+        <div class="grid-2 gap-12 mb-8">
+          <input type="text" class="form-control" value="Grass-fed Prime Ribeye with Herb Demi-Glace">
+          <input type="text" class="form-control" value="Pan-Roasted Chilean Sea Bass with Saffron Velouté">
+        </div>
       </div>
-    </div>
 
-    <div class="card mb-24" style="background:var(--gray-50);">
-      <div class="font-bold text-sm mb-8">Course 3: Confections & Dessert</div>
-      <div class="grid-2 gap-12">
-        <input type="text" class="form-control" value="Dark Chocolate Ganache Sphere with Raspberry Coulis">
-        <input type="text" class="form-control" value="Madagascar Vanilla Panna Cotta">
+      <div class="card mb-24" style="background:var(--gray-50);">
+        <div class="font-bold text-sm mb-8">Course 3: Confections & Dessert</div>
+        <div class="grid-2 gap-12">
+          <input type="text" class="form-control" value="Dark Chocolate Ganache Sphere with Raspberry Coulis">
+          <input type="text" class="form-control" value="Madagascar Vanilla Panna Cotta">
+        </div>
       </div>
     </div>
 
@@ -135,5 +137,36 @@
       </footer>
     </div>
   </div>
+  <script>
+    let courseCount = 3;
+    const courseTitles = [
+      "Palate Cleanser & Intermezzo",
+      "Late Night Savory Bites",
+      "Artisanal Cheese & Fruit Course",
+      "Specialty Beverage Pairing"
+    ];
+
+    function addCourse() {
+      courseCount++;
+      const container = document.getElementById('courses-container');
+      const card = document.createElement('div');
+      card.className = 'card mb-16';
+      card.style.background = 'var(--gray-50)';
+      const titleHint = courseTitles[(courseCount - 4) % courseTitles.length] || "Additional Course";
+      
+      card.innerHTML = `
+        <div class="flex-between mb-8" style="align-items:center;">
+          <div class="font-bold text-sm">Course ${courseCount}: ${titleHint}</div>
+          <button type="button" class="btn btn-ghost btn-sm" style="color:#dc2626; font-size:12px; padding:2px 8px;" onclick="this.closest('.card').remove()">Remove</button>
+        </div>
+        <div class="grid-2 gap-12">
+          <input type="text" class="form-control" placeholder="Dish name (e.g. Citrus Mint Sorbet)">
+          <input type="text" class="form-control" placeholder="Optional dietary alternative">
+        </div>
+      `;
+      container.appendChild(card);
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
 </body>
 </html>
